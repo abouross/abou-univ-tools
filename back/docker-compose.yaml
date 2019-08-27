@@ -1,0 +1,20 @@
+version: '3'
+services:
+  aut_db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=aut
+      - MYSQL_USER=aut
+      - MYSQL_PASSWORD=aut_db_password
+    ports:
+      - "3306:3306"
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    volumes:
+      - ./db_data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8000:80"
+    environment:
+      - PMA_HOST=aut_db

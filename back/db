@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case $1 in
+"start")
+  echo "Starting ..."
+  docker-compose up -d
+  ;;
+"stop")
+  echo "Stoping ..."
+  docker-compose down
+  ;;
+*)
+		printf "'Usage: %s <action>'\n" "$(basename $0)"
+		echo "start 'Start Database Server'"
+		echo "stop 'Stop Database Server'"
+		;;
+esac
